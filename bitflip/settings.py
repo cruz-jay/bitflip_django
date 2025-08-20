@@ -1,0 +1,181 @@
+
+
+
+
+#-------------------------------------------#
+                                            #
+from pathlib import Path                    #
+import os                                   #
+from datetime import timedelta              #
+from decouple import config                 #
+from dotenv import load_dotenv              #
+load_dotenv()                               #
+                                            #
+#-------------------------------------------#
+
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+FINNHUB_API_KEY = config("FINNHUB_API_KEY")
+ALPACA_API_KEY_ID = config('ALPACA_API_KEY_ID')
+ALPACA_API_SECRET_KEY = config('ALPACA_API_SECRET_KEY')
+NEWS_API_KEY=config("NEWS_API_KEY")
+
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'django-insecure-yx!kfo7&_#6h0t%!(p8xv(whr%ala66v0l9_0-l62&vvkw%_(e'
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = []
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://localhost:3001",
+    "http://localhost:5173"
+]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+SIMPLE_JWT = {
+    'AUTH_HEADER_TYPES': ('JWT',),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=35),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+}
+
+DJOSER = {
+    'LOGIN_FIELD': 'email',
+    'USER_CREATE_PASSWORD_RETYPE': False,
+    "SERIALIZERS": {
+        "user": "users.serializers.CustomUserSerializer",
+        "current_user": "users.serializers.CustomUserSerializer",
+        'user_create': 'users.serializers.CustomUserCreateSerializer', 
+    },
+    'TOKEN_MODEL': None,
+}
+
+AUTH_USER_MODEL = 'users.CustomUser'
+
+
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'djoser',
+    'corsheaders',
+
+
+    'users',
+    'core'
+]
+
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",                            # ADDED
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+ROOT_URLCONF = 'bitflip.urls'
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+WSGI_APPLICATION = 'bitflip.wsgi.application'
+
+
+USE_LOCAL = config('USE_LOCAL', default=False, cast=bool)
+
+if USE_LOCAL:
+    DATABASES = {
+        'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('LOCAL_DB_NAME', default='bitflip_local'),
+        'USER': config('LOCAL_DB_USER', default='jaycruz'),
+        'PASSWORD': config('LOCAL_DB_PASSWORD', default='6969'),
+        'HOST': config('LOCAL_DB_HOST', default='localhost'),
+        'PORT': config('LOCAL_DB_PORT',default='5432')
+    }
+}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': config('RAILWAY_DB_NAME'),
+            'USER': config('RAILWAY_DB_USER'),
+            'PASSWORD': config('RAILWAY_DB_PASSWORD'),
+            'HOST': config('RAILWAY_DB_HOST'),
+            'PORT': config('RAILWAY_DB_PORT'),
+            'OPTIONS': {
+                'sslmode': 'require',
+            },
+        }
+    }
+
+# Password validation
+# https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
+
+
+# Internationalization
+# https://docs.djangoproject.com/en/5.2/topics/i18n/
+
+LANGUAGE_CODE = 'en-us'
+
+TIME_ZONE = 'UTC'
+
+USE_I18N = True
+
+USE_TZ = True
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/5.2/howto/static-files/
+
+STATIC_URL = 'static/'
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

@@ -1,0 +1,11 @@
+django
+djangorestframework
+spacy
+transformers
+torch
+python-decouple
+dotenv
+psycopg2
+djoser
+django-cors-headers
+timedelta

@@ -1,0 +1,51 @@
+
+.env
+# Ignore environment variables file
+*.pyc
+# Ignore Python bytecode files
+__pycache__/                        
+# Ignore Python cache directories
+*.pyo
+# Ignore Python optimized files             
+
+*.pyd
+# Ignore Python dynamic module files
+*.db
+# Ignore database files
+*.sqlite3
+# Ignore SQLite database files
+*.log
+# Ignore log files
+*.env
+# Ignore environment variable files
+*.DS_Store
+# Ignore macOS system files
+*.egg-info/
+# Ignore Python egg info directories
+*.egg
+# Ignore Python egg files
+*.coverage          
+
+# Ignore coverage reports
+*.migrations/               
+# Ignore Django migrations directories
+*.py[cod]
+# Ignore compiled Python files
+*.swp
+# Ignore Vim swap files
+*.swo
+# Ignore Vim swap files
+*.bak       
+# Ignore backup files
+*.tmp
+# Ignore temporary files
+*.orig          
+# Ignore original files
+*.idea/
+# Ignore JetBrains IDE configuration directories
+*.vscode/
+# Ignore Visual Studio Code configuration directories
+*.log           \
+api.http
+
+CLAUDE.md
