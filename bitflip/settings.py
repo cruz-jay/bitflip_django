@@ -27,16 +27,20 @@ SECRET_KEY = 'django-insecure-yx!kfo7&_#6h0t%!(p8xv(whr%ala66v0l9_0-l62&vvkw%_(e
 
 DEBUG = False
 
-ALLOWED_HOSTS = ["https://django-pjmj4.sevalla.app/",
-                 "bitflipdjango-production.up.railway.app"]
+ALLOWED_HOSTS = [
+    "https://django-pjmj4.sevalla.app/",
+    "https://bitflipdjango-production.up.railway.app",
+
+    ]
+
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:3001",
-    "http://localhost:5173"
+    "http://localhost:5173",
     "https://bitflip-frontend.vercel.app",
-    "bitflip-vite-cruz-jays-projects.vercel.app",
-    "bitflip-vite-git-master-cruz-jays-projects.vercel.app",
-    "https://www.bitflip.live"
+    "https://bitflip-vite-cruz-jays-projects.vercel.app",
+    "https://bitflip-vite-git-master-cruz-jays-projects.vercel.app",
+    "https://www.bitflip.live",
 ]
 
 REST_FRAMEWORK = {
