@@ -30,7 +30,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "https://django-pjmj4.sevalla.app/",
     "https://bitflipdjango-production.up.railway.app",
-
+    "django-pjmj4.sevalla.app/",
+    "bitflipdjango-production.up.railway.app",
     ]
 
 CORS_ALLOWED_ORIGINS = [
