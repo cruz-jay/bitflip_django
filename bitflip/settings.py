@@ -25,7 +25,7 @@ NEWS_API_KEY=config("NEWS_API_KEY")
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-yx!kfo7&_#6h0t%!(p8xv(whr%ala66v0l9_0-l62&vvkw%_(e'
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "https://django-pjmj4.sevalla.app/",
