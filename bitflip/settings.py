@@ -42,6 +42,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://bitflip-vite-cruz-jays-projects.vercel.app",
     "https://bitflip-vite-git-master-cruz-jays-projects.vercel.app",
     "https://www.bitflip.live",
+    "https://www.bitflip.info",
 ]
 
 REST_FRAMEWORK = {
