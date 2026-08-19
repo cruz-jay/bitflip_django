@@ -16,7 +16,6 @@ django-cors-headers==4.7.0
 djangorestframework==3.16.1
 djangorestframework_simplejwt==5.5.1
 djoser==2.3.3
-dotenv==0.9.9
 filelock==3.18.0
 fsspec==2025.7.0
 hf-xet==1.1.7
@@ -64,7 +63,6 @@ sqlparse==0.5.3
 srsly==2.5.1
 sympy==1.14.0
 thinc==8.3.6
-timedelta==2020.12.3
 tokenizers==0.21.4
 torch==2.8.0
 tqdm==4.67.1
